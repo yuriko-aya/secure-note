@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Secure Note</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <main>
+    <p class="mark">Secure Note</p>
+    <h1>Leave a message that deletes itself.</h1>
+    <p class="lede">The message is encrypted in this browser with AES-256-GCM. The server stores only the ciphertext.</p>
+    <form id="create-form">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="8" autocomplete="off" required placeholder="Write something only the link holder should read"></textarea>
+      <div class="options">
+        <label>
+          Keep for
+          <select id="ttl" name="ttl">
+            <option value="60">1 minute</option>
+            <option value="3600">1 hour</option>
+            <option value="86400" selected>1 day</option>
+            <option value="604800">7 days</option>
+          </select>
+        </label>
+        <label>
+          Views
+          <select id="views" name="views">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </label>
+      </div>
+      <div class="cf-turnstile" data-sitekey="__TURNSTILE_SITE_KEY__" data-theme="auto"></div>
+      <button type="submit" id="create-button">Create link</button>
+      <p id="create-error" class="error" hidden></p>
+    </form>
+    <section id="result" hidden>
+      <h2>Secret link</h2>
+      <p>Send the whole link, including the part after <code>#</code>. That part is the key, and it is never sent to the server. Anyone with the link can read the note until it expires.</p>
+      <div class="link-row">
+        <input id="secret-link" readonly>
+        <button type="button" id="copy-button">Copy</button>
+      </div>
+      <p id="created-policy"></p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+:root {
+  color-scheme: light;
+  --ink: #1b1730;
+  --muted: #5c5672;
+  --line: #ddd6ee;
+  --paper: #f4f2fb;
+  --card: #ffffff;
+  --field: #f7f6fb;
+  --plain: #efeaf8;
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
+  --accent-ink: #f5f3ff;
+  --danger: #9f1239;
+  --placeholder: #8b86a0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e6f2;
+    --muted: #a7a3b8;
+    --line: #3a3654;
+    --paper: #0e1424;
+    --card: #1a1d27;
+    --field: #12151e;
+    --plain: #12101c;
+    --accent: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --accent-ink: #f5f3ff;
+    --danger: #f0a0a8;
+    --placeholder: #7d7890;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.5 "Iowan Old Style", Palatino, Georgia, serif;
+}
+
+main {
+  width: min(40rem, calc(100% - 2rem));
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+.mark {
+  margin: 0 0 0.5rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+}
+
+.lede, p { color: var(--muted); }
+
+form, .options, .link-row { display: grid; gap: 0.75rem; }
+
+.options { grid-template-columns: 1fr 1fr; margin-top: 0.75rem; }
+
+.cf-turnstile { min-height: 65px; }
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+textarea, select, input, button {
+  font: inherit;
+  color: var(--ink);
+}
+
+textarea, select, input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--field);
+}
+
+textarea::placeholder { color: var(--placeholder); }
+
+textarea:focus, select:focus, input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+textarea { resize: vertical; min-height: 10rem; }
+
+button {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  background: var(--accent);
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+
+button:hover { background: var(--accent-hover); }
+
+button:disabled { opacity: 0.6; cursor: wait; }
+
+code { color: var(--accent); }
+
+.link-row { grid-template-columns: 1fr auto; align-items: center; }
+
+.error { color: var(--danger); }
+
+pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--plain);
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  main { margin: 1rem auto; padding: 1.25rem; }
+  .options, .link-row { grid-template-columns: 1fr; }
+}

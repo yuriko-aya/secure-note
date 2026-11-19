@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Secure Note</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <p class="mark">Secure Note</p>
+    <h1>A sealed note</h1>
+    <section id="sealed">
+      <p class="lede">Nothing is decrypted until you reveal it. Each reveal uses one view.</p>
+      <button type="button" id="reveal-button">Reveal</button>
+      <p id="note-error" class="error" hidden></p>
+    </section>
+    <section id="opened" hidden>
+      <p id="policy"></p>
+      <pre id="plaintext"></pre>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
